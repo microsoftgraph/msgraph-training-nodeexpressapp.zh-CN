@@ -1,4 +1,4 @@
-# <a name="microsoft-graph-training-module---build-nodejs-express-apps-with-microsoft-graph"></a>microsoft graph 培训模块-使用 Microsoft graph 的 "生成节点. .js Express 应用"
+# <a name="microsoft-graph-training-module---build-nodejs-express-apps-with-microsoft-graph"></a>Microsoft Graph 培训模块-使用 Microsoft Graph 的 "生成节点。 .js Express 应用"
 
 本模块将介绍如何通过生成 node.js Express web 应用程序, 使用 Microsoft Graph 访问 Office 365 中的数据。
 
@@ -6,7 +6,7 @@
 
 在此实验室中, 将使用 Azure AD v2 身份验证终结点创建一个 node.js Express web 应用程序, 以使用 Microsoft Graph 访问 Office 365 中的数据。
 
-- [node.js Microsoft Graph 教程](https://docs.microsoft.com/graph/training/node-tutorial)
+- [Node.js Microsoft Graph 教程](https://docs.microsoft.com/graph/training/node-tutorial)
 
 ## <a name="demos"></a>演示
 

@@ -199,7 +199,7 @@ function getAuthenticatedClient(accessToken) {
 }
 ```
 
-这将`getUserDetails`导出函数, 该函数使用 Microsoft Graph SDK 调用`/me`终结点并返回结果。
+这将`getUserDetails`导出函数, 该函数使用 MICROSOFT Graph SDK 调用`/me`终结点并返回结果。
 
 更新中`signInComplete` `/app.s`的方法以调用此函数。 首先, 将以下`require`语句添加到文件顶部。
 

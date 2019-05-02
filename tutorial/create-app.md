@@ -12,7 +12,7 @@ npm install express-generator -g
 express --hbs graph-tutorial
 ```
 
-express 生成器将创建一个名`graph-tutorial`为 "搭建基架" 的新目录, 并将其作为 Express 应用程序。 导航到此新目录, 并输入以下命令来安装依赖项。
+Express 生成器将创建一个名`graph-tutorial`为 "搭建基架" 的新目录, 并将其作为 Express 应用程序。 导航到此新目录, 并输入以下命令来安装依赖项。
 
 ```Shell
 npm install
@@ -34,7 +34,7 @@ npm start
 - 将值存储在内存中的服务器端会话中的[快速会话](https://github.com/expressjs/session)。
 - [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad)身份验证和获取访问令牌。
 - [简单-oauth2](https://github.com/lelylan/simple-oauth2)用于令牌管理。
-- microsoft graph-用于调用 microsoft graph 的[客户端](https://github.com/microsoftgraph/msgraph-sdk-javascript)。
+- microsoft graph-用于调用 Microsoft Graph 的[客户端](https://github.com/microsoftgraph/msgraph-sdk-javascript)。
 
 在 CLI 中运行以下命令。
 
