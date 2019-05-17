@@ -43,15 +43,18 @@ npm install dotenv@6.2.0 moment@2.24.0 connect-flash@0.1.1 express-session@1.15.
 npm install passport-azure-ad@4.0.0 simple-oauth2@2.2.1 @microsoft/microsoft-graph-client@1.5.2
 ```
 
->__WINDOWS 用户__
+> [!TIP]
+> Windows 用户在尝试在 Windows 上安装这些程序包时可能会收到以下错误消息。
 >
->如果您在尝试安装这些包时收到以下错误消息:
+> ```Shell
+> gyp ERR! stack Error: Can't find Python executable "python", you can set the PYTHON env variable.
+> ```
 >
-> `gyp ERR! stack Error: Can't find Python executable "python", you can set the PYTHON env variable.`
+> 若要解决此错误, 请运行以下命令, 以使用安装 VS 生成工具和 Python 的提升 (管理员) 终端窗口来安装 Windows 生成工具。
 >
->运行以下命令, 使用安装了 VS 生成工具和 Python 的提升 (管理员) 终端窗口来安装 Windows 生成工具
->
-> `npm install --global --production windows-build-tools`
+> ```Shell
+> npm install --global --production windows-build-tools
+> ```
 
 现在`connect-flash` , 更新应用程序以使用和`express-session`中间件。 打开`./app.js`文件, 并将以下`require`语句添加到文件顶部。
 
