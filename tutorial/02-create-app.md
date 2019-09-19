@@ -1,32 +1,32 @@
 <!-- markdownlint-disable MD002 MD041 -->
 
-在本练习中, 将使用[Express](http://expressjs.com/)生成 web 应用程序。 如果尚未安装 Express 生成器, 则可以使用以下命令从命令行界面 (CLI) 安装它。
+在本练习中，将使用[Express](http://expressjs.com/)生成 web 应用程序。 如果尚未安装 Express 生成器，则可以使用以下命令从命令行界面（CLI）安装它。
 
 ```Shell
 npm install express-generator -g
 ```
 
-打开您的 CLI, 导航到您有权创建文件的目录, 然后运行以下命令, 以创建一个使用[Handlebars](http://handlebarsjs.com/)作为呈现引擎的新 Express 应用程序。
+打开您的 CLI，导航到您有权创建文件的目录，然后运行以下命令，以创建一个使用[Handlebars](http://handlebarsjs.com/)作为呈现引擎的新 Express 应用程序。
 
 ```Shell
 express --hbs graph-tutorial
 ```
 
-Express 生成器将创建一个名`graph-tutorial`为 "搭建基架" 的新目录, 并将其作为 Express 应用程序。 导航到此新目录, 并输入以下命令来安装依赖项。
+Express 生成器将创建一个名`graph-tutorial`为 "搭建基架" 的新目录，并将其作为 Express 应用程序。 导航到此新目录，并输入以下命令来安装依赖项。
 
 ```Shell
 npm install
 ```
 
-命令完成后, 使用以下命令启动本地 web 服务器。
+命令完成后，使用以下命令启动本地 web 服务器。
 
 ```Shell
 npm start
 ```
 
-打开浏览器，并导航到 `http://localhost:3000`。 如果一切正常, 你将看到 "欢迎使用快递" 消息。 如果看不到该消息, 请查看[Express 入门指南](http://expressjs.com/starter/generator.html)。
+打开浏览器，并导航到 `http://localhost:3000`。 如果一切正常，你将看到 "欢迎使用快递" 消息。 如果看不到该消息，请查看[Express 入门指南](http://expressjs.com/starter/generator.html)。
 
-在继续操作之前, 请先安装您将使用的一些其他宝石:
+在继续操作之前，请先安装您将使用的一些其他宝石：
 
 - 用于从 env 文件加载值的[dotenv](https://github.com/motdotla/dotenv) 。
 - 设置日期/时间值格式的[时刻](https://github.com/moment/moment/)。
@@ -39,8 +39,8 @@ npm start
 在 CLI 中运行以下命令。
 
 ```Shell
-npm install dotenv@8.0.0 moment@2.24.0 connect-flash@0.1.1 express-session@1.16.1
-npm install passport-azure-ad@4.0.0 simple-oauth2@2.2.1 @microsoft/microsoft-graph-client@1.6.0
+npm install dotenv@8.1.0 moment@2.24.0 connect-flash@0.1.1 express-session@1.16.2
+npm install passport-azure-ad@4.1.0 simple-oauth2@2.4.0 @microsoft/microsoft-graph-client@1.7.0
 ```
 
 > [!TIP]
@@ -50,13 +50,13 @@ npm install passport-azure-ad@4.0.0 simple-oauth2@2.2.1 @microsoft/microsoft-gra
 > gyp ERR! stack Error: Can't find Python executable "python", you can set the PYTHON env variable.
 > ```
 >
-> 若要解决此错误, 请运行以下命令, 以使用安装 VS 生成工具和 Python 的提升 (管理员) 终端窗口来安装 Windows 生成工具。
+> 若要解决此错误，请运行以下命令，以使用安装 VS 生成工具和 Python 的提升（管理员）终端窗口来安装 Windows 生成工具。
 >
 > ```Shell
 > npm install --global --production windows-build-tools
 > ```
 
-现在`connect-flash` , 更新应用程序以使用和`express-session`中间件。 打开`./app.js`文件, 并将以下`require`语句添加到文件顶部。
+现在`connect-flash` ，更新应用程序以使用和`express-session`中间件。 打开`./app.js`文件，并将以下`require`语句添加到文件顶部。
 
 ```js
 var session = require('express-session');
@@ -98,7 +98,7 @@ app.use(function(req, res, next) {
 
 ## <a name="design-the-app"></a>设计应用程序
 
-首先, 创建应用的全局布局。 打开`./views/layout.hbs`文件, 并将整个内容替换为以下代码。
+首先，创建应用的全局布局。 打开`./views/layout.hbs`文件，并将整个内容替换为以下代码。
 
 ```html
 <!DOCTYPE html>
@@ -185,7 +185,7 @@ app.use(function(req, res, next) {
 </html>
 ```
 
-此代码添加简单样式的[引导](http://getbootstrap.com/), 并添加一些简单图标的[字体](https://fontawesome.com/)。 它还定义具有导航栏的全局布局。
+此代码添加简单样式的[引导](http://getbootstrap.com/)，并添加一些简单图标的[字体](https://fontawesome.com/)。 它还定义具有导航栏的全局布局。
 
 现在打开`./public/stylesheets/style.css`并将其全部内容替换为以下内容。
 
@@ -201,7 +201,7 @@ body {
 }
 ```
 
-现在更新默认页面。 打开`./views/index.hbs`文件, 并将其内容替换为以下内容。
+现在更新默认页面。 打开`./views/index.hbs`文件，并将其内容替换为以下内容。
 
 ```html
 <div class="jumbotron">
@@ -216,7 +216,7 @@ body {
 </div>
 ```
 
-打开`./routes/index.js`文件, 并将现有代码替换为以下代码。
+打开`./routes/index.js`文件，并将现有代码替换为以下代码。
 
 ```js
 var express = require('express');
@@ -234,6 +234,6 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 ```
 
-保存所有更改, 然后重新启动服务器。 现在, 应用程序看起来应非常不同。
+保存所有更改，然后重新启动服务器。 现在，应用程序看起来应非常不同。
 
 ![重新设计的主页的屏幕截图](./images/create-app-01.png)
