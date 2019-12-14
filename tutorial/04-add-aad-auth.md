@@ -108,12 +108,10 @@ router.get('/signin',
         response: res,
         prompt: 'login',
         failureRedirect: '/',
-        failureFlash: true
+        failureFlash: true,
+        successRedirect: '/'
       }
     )(req,res,next);
-  },
-  function(req, res) {
-    res.redirect('/');
   }
 );
 
@@ -175,6 +173,7 @@ app.use('/auth', authRouter);
 
 ```js
 var graph = require('@microsoft/microsoft-graph-client');
+require('isomorphic-fetch');
 
 module.exports = {
   getUserDetails: async function(accessToken) {
@@ -300,7 +299,7 @@ async function signInComplete(iss, sub, profile, accessToken, refreshToken, para
 }
 ```
 
-更新中`callback` `./routes/auth.js`的路由，以删除`req.flash`具有访问令牌的行。 `callback`路由应该如下所示。
+更新中`callback` `./routes/auth.js`的路由，以删除`req.flash`和手动重定向，并将`successRedirect`参数提供`passport.authenticate`给。 `callback`路由应该如下所示。
 
 ```js
 router.post('/callback',
@@ -309,12 +308,10 @@ router.post('/callback',
       {
         response: res,
         failureRedirect: '/',
-        failureFlash: true
+        failureFlash: true,
+        successRedirect: '/'
       }
     )(req,res,next);
-  },
-  function(req, res) {
-    res.redirect('/');
   }
 );
 ```

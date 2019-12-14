@@ -35,12 +35,13 @@ npm start
 - [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad)身份验证和获取访问令牌。
 - [简单-oauth2](https://github.com/lelylan/simple-oauth2)用于令牌管理。
 - microsoft graph-用于调用 Microsoft Graph 的[客户端](https://github.com/microsoftgraph/msgraph-sdk-javascript)。
+- [isomorphic-](https://github.com/matthew-andrews/isomorphic-fetch) polyfill 获取对节点的提取。 `microsoft-graph-client`库需要获取 polyfill。 有关详细信息，请参阅[Microsoft Graph JavaScript 客户端库 wiki](https://github.com/microsoftgraph/msgraph-sdk-javascript/wiki/Migration-from-1.x.x-to-2.x.x#polyfill-only-when-required) 。
 
 在 CLI 中运行以下命令。
 
 ```Shell
-npm install dotenv@8.1.0 moment@2.24.0 connect-flash@0.1.1 express-session@1.16.2
-npm install passport-azure-ad@4.1.0 simple-oauth2@2.4.0 @microsoft/microsoft-graph-client@1.7.0
+npm install dotenv@8.2.0 moment@2.24.0 connect-flash@0.1.1 express-session@1.17.0 isomorphic-fetch@2.2.1
+npm install passport-azure-ad@4.2.0 simple-oauth2@3.1.0 @microsoft/microsoft-graph-client@2.0.0
 ```
 
 > [!TIP]
