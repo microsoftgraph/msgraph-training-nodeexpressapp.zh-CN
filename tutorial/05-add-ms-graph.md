@@ -1,20 +1,23 @@
 <!-- markdownlint-disable MD002 MD041 -->
 
-在本练习中，将在应用程序中加入 Microsoft Graph。 对于此应用程序，您将使用 [microsoft graph 客户端](https://github.com/microsoftgraph/msgraph-sdk-javascript) 库调用 microsoft graph。
+在此练习中，你将 Microsoft Graph 合并到应用程序中。 对于此应用程序，你将使用 [microsoft-graph-client](https://github.com/microsoftgraph/msgraph-sdk-javascript) 库调用 Microsoft Graph。
 
 ## <a name="get-calendar-events-from-outlook"></a>从 Outlook 获取日历事件
 
-1. 打开 **。/graph.js** 并将以下函数添加到内部 `module.exports` 。
+1. 打开 **./graph.js，** 然后向内部添加以下函数 `module.exports` 。
 
     :::code language="javascript" source="../demo/graph-tutorial/graph.js" id="GetCalendarViewSnippet":::
 
-    考虑此代码执行的操作。
+    考虑此代码正在做什么。
 
-    - 将调用的 URL 为 `/me/events` 。
-    - 此 `select` 方法将为每个事件返回的字段限制为只是视图实际使用的字段。
-    - `orderby`方法按其创建日期和时间对结果进行排序，最新项目最先开始。
+    - 将调用的 URL 为 `/me/calendarview` 。
+    - 该方法将标头添加到请求中，从而导致在用户的时区返回开始时间 `header` `Prefer: outlook.timezone` 和结束时间。
+    - `query`该方法设置 `startDateTime` 日历 `endDateTime` 视图的和参数。
+    - `select`该方法将每个事件返回的字段限制为视图将实际使用的字段。
+    - `orderby`该方法按开始时间对结果进行排序。
+    - 该方法 `top` 将结果限制为 50 个事件。
 
-1. 在名为 **calendar.js** 的 **/routes** 目录中创建一个新文件，并添加以下代码。
+1. 在名为calendar.js的 **./routes** **目录中创建新** 文件，并添加以下代码。
 
     ```javascript
     const router = require('express-promise-router')();
@@ -106,40 +109,40 @@
     module.exports = router;
     ```
 
-1. 更新 **。/app.js** 以使用此新路由。 在行 **前面** 添加以下行 `var app = express();` 。
+1. 更新 **./app.js** 以使用此新路由。 在该行之前 **添加以下** `var app = express();` 行。
 
     ```javascript
     var calendarRouter = require('./routes/calendar');
     ```
 
-1. 在行 **后面** 添加以下行 `app.use('/auth', authRouter);` 。
+1. 在行后 **添加以下** `app.use('/auth', authRouter);` 行。
 
     ```javascript
     app.use('/calendar', calendarRouter);
     ```
 
-1. 重新启动服务器。 登录并单击导航栏中的 " **日历** " 链接。 如果一切正常，应在用户的日历上看到一个 JSON 转储的事件。
+1. 重新启动服务器。 登录并单击导航 **栏中** 的"日历"链接。 如果一切正常，应在用户日历上看到事件的 JSON 转储。
 
 ## <a name="display-the-results"></a>显示结果
 
-现在，您可以添加一个视图，以对用户更友好的方式显示结果。
+现在，您可以添加视图以更用户友好的方式显示结果。
 
-1. 将以下代码添加到中的 " **/app.js" 行后。** `app.set('view engine', 'hbs');`
+1. 在 **./app.js行后添加** `app.set('view engine', 'hbs');` 以下代码。
 
     :::code language="javascript" source="../demo/graph-tutorial/app.js" id="FormatDateSnippet":::
 
-    这将实现 [Handlebars 帮助](http://handlebarsjs.com/#helpers) 程序，将 Microsoft Graph 返回的 ISO 8601 日期格式化为人友好的内容。
+    这将实现 [Handlebars 帮助程序](http://handlebarsjs.com/#helpers) ，将 Microsoft Graph 返回的 ISO 8601 日期格式化为更友好的内容。
 
-1. 在名为 " **hbs** " 的 **/views** 目录中创建一个新文件，并添加以下代码。
+1. 在 **./views** 目录中创建一个名为 **calendar.bms** 的新文件，并添加以下代码。
 
     :::code language="html" source="../demo/graph-tutorial/views/calendar.hbs" id="LayoutSnippet":::
 
-    这将遍历一组事件并为每个事件添加一个表行。
+    这将循环访问事件集合，并针对每个事件添加一个表格行。
 
-1. 现在，更新 **/routes/calendar.js** 中的路由以使用此视图。 将现有路由替换为以下代码。
+1. 现在更新 **./routes/calendar.js** 中的路由以使用此视图。 将现有路由替换为以下代码。
 
     :::code language="javascript" source="../demo/graph-tutorial/routes/calendar.js" id="GetRouteSnippet" highlight="33-36,49,51-54,61":::
 
-1. 保存所做的更改，重新启动服务器，然后登录到应用。 单击 " **日历** " 链接，应用现在应呈现一个事件表。
+1. 保存更改，重新启动服务器，然后登录应用。 单击 **"日历"** 链接，应用现在应呈现事件表。
 
     ![事件表的屏幕截图](./images/add-msgraph-01.png)
